@@ -7,7 +7,7 @@ Created on Tue Apr 13 09:36:39 2021
 """
 from tqdm.auto import tqdm
 import pandas as pd
-import uniprot as uni
+import uniprot.uniprot as uni
 from patho_chembl.trg_mol_funcion import trg_to_mol
 from ligand_from_pfam.domain_pdb_ligand import ligands_from_domain
 from extracts.extract_ligand_from_pdb import ligands_from_pdb, pdb_ligands_mapping
@@ -40,7 +40,7 @@ def proteome_compound(uniprot_list, path_dic, db_assay, db_mech, pdb_pfam_datase
         print('Running ', input_unip)
         if len(path_empty) == 0:
             pdbs = uni.map(input_unip,f="UniProtKB_AC-ID",t='PDB')
-            print(input_unip, pdbs)
+            #print(input_unip, pdbs)
             pdb_list=[]
             if "failedIds" not in pdbs.keys():
                 for k in pdbs.keys():
@@ -52,18 +52,19 @@ def proteome_compound(uniprot_list, path_dic, db_assay, db_mech, pdb_pfam_datase
             #print (res)
 
             chembl = uni.map(input_unip,"UniProtKB_AC-ID","ChEMBL")
-            #print(chembl)                
+            print(chembl)                
             chembl_comp =[] 
             chembl_list=[]
+            
             if "failedIds" not in chembl.keys():
                 for k in chembl.keys():
                     for v in chembl.values():
                         for element in v:
-                            chembl_list = element.get('to')
+                            chembl_list.append(element.get('to'))
                             #print (res)
                             
             domains = uni.pfam_from_uniprot(input_unip)
-            #print(domains)   
+            print(chembl_list)   
             if chembl_list:
                 for chembl_target_id in chembl_list:
                     chembl_comp.append(trg_to_mol(chembl_target_id))
