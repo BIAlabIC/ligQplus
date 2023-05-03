@@ -1,6 +1,73 @@
 # ligQplus
 Massive compound screening for pathogenic proteomes.
 
+w=960&amp;h=720">
+
+# Work scheme
+
+# Create execution environment
+
+conda create --name ligQ_plus
+
+# Activate environment
+
+conda activate ligQ_plus
+
+# Download and pre-requisites 
+git clone https://github.com/BIAlabIC/ligQplus.git
+export PYTHONPATH=$PYTHONPATH:/path/to/ligqplus
+export PATH=$PATH:/path/to/ligqplus
+
+# Create databases
+
+# MOAD
+wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
+
+python /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
+# CHEMBL
+wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
+
+python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
+
+python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
+
+# Mapping pfam-pdb and pdb-ligands
+
+wget -O pdb_pfam_mapping.txt "http://ftp.ebi.ac.uk/pub/databases/Pfam/mappings/pdb_pfam_mapping.txt"
+
+wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data/lig_pairs.lst"
+
+
+# Prepare proteome and extract Uniprot IDs
+
+$makeblastdb -in Proteome_uniprot.fasta -dbtype prot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <img src="https://docs.google.com/drawings/d/1PApRMKCJE-YwFVnGwfm4VbXhjwNuiiGMwmvLRIKXxkU/export/png">
 
 #MAPPING PDBs WITH PFAM IDs
@@ -41,42 +108,5 @@ pfam_mol_mech.py: returns all compounds related to the search pfam ID according 
 SMILES_file: SMILES list
 
 OUT: File with two columns. First column ChEMBL_ID, second column SMILES. Separated by "\t". xPfamID + xTanimoto
-<img src="https://docs.google.com/drawings/d/e/2PACX-1vSSwg9kpBGrZ5d2lJAgvReRPHrV0O1JAkZ2C8Mu9ui4F2FxBriT6iRT8mE1QZaTFPWPx9qbpNCMPNRf/pub?w=960&amp;h=720">
-
-# Work scheme
-
-# Create execution environment
-
-conda create --name ligQ_plus
-
-# Activate environment
-
-conda activate ligQ_plus
-
-# Download and pre-requisites 
-git clone https://github.com/BIAlabIC/ligQplus.git
-export PYTHONPATH=$PYTHONPATH:/path/to/ligqplus
-export PATH=$PATH:/path/to/ligqplus
-
-# Create databases
-
-# MOAD
-wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
-
-python /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
-# CHEMBL
-wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
-
-python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
-
-python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
-
-# Mapping pfam-pdb and pdb-ligands
-
-wget -O pdb_pfam_mapping.txt "http://ftp.ebi.ac.uk/pub/databases/Pfam/mappings/pdb_pfam_mapping.txt"
-
-wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data/lig_pairs.lst"
-
-
-
+<img src="https://docs.google.com/drawings/d/e/2PACX-1vSSwg9kpBGrZ5d2lJAgvReRPHrV0O1JAkZ2C8Mu9ui4F2FxBriT6iRT8mE1QZaTFPWPx9qbpNCMPNRf/pub?
 
