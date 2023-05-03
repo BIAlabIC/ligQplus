@@ -62,15 +62,19 @@ export PATH=$PATH:/path/to/ligqplus
 
 # MOAD
 wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
+
 python /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
 # CHEMBL
 wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
+
 python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
+
 python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
 
 # Mapping pfam-pdb and pdb-ligands
 
 wget -O pdb_pfam_mapping.txt "http://ftp.ebi.ac.uk/pub/databases/Pfam/mappings/pdb_pfam_mapping.txt"
+
 wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data/lig_pairs.lst"
 
 
