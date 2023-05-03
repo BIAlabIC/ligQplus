@@ -41,6 +41,7 @@ $ wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data
 ```
 
 ### Prepare proteome and extract Uniprot IDs
+> Note: "Proteome_uniprot.fasta" refers to all proteins in uniprot DataBase related to the organism of interest. Must be download from [Uniprot](https://www.uniprot.org)
 ```
 $ makeblastdb -in Proteome_uniprot.fasta -dbtype prot
 
