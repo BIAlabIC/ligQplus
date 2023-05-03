@@ -1,7 +1,6 @@
 # ligQplus
-Massive compound screening for pathogenic proteomes.
 
-w=960&amp;h=720">
+Massive compound screening for pathogenic proteomes.
 
 # Work scheme
 
@@ -40,7 +39,7 @@ wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data/l
 
 # Prepare proteome and extract Uniprot IDs
 
-$makeblastdb -in Proteome_uniprot.fasta -dbtype prot
+makeblastdb -in Proteome_uniprot.fasta -dbtype prot
 
 
 
