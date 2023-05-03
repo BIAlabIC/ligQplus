@@ -5,7 +5,7 @@ w=960&amp;h=720">
 
 # Work scheme
 
-# Create execution environment
+# Create execution environment:
 
 conda create --name ligQ_plus
 
