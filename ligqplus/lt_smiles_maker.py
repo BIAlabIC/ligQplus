@@ -31,7 +31,7 @@ def process_smiles_dict(smiles_path):
         return smiles_dict
     
 
-def final_csv_maker(path, lt_file, name='ORG_lt_ligands.csv'):
+def final_csv_maker(path, lt_file, name='ORG_lt_smiles.csv'):
     lt_dict=process_lt_dict(lt_file)
     dire=open_directory(path)
     final_list=[]
@@ -62,7 +62,7 @@ def main():
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('-i','--input', help= 'Directory path', required=True)
     parser.add_argument('-dict', '--dataset', help='Path to the locus tag-uniprot dictionary', required=True)
-    parser.add_argument('-o', '--output', help= 'type: ORG_lt_ligands.csv Change ORG.', required=True)
+    parser.add_argument('-o', '--output', help= 'type: ORG_lt_smiles.csv Change ORG.', required=True)
     args=parser.parse_args()
     
     org_lt_ligand=final_csv_maker(args.input, args.dataset, args.output)
