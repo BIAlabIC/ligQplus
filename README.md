@@ -5,6 +5,10 @@ Massive compound screening for pathogenic proteomes.
 
   In order to carry out this pipeline, the first thing to do is create a conda environment where you can install a series of necessary packages. See here more information about [Anaconda](https://www.anaconda.com/download/). In addition, it is necessary to have a version of python 3 at least.
   
+### Download and pre-requisites 
+```
+$ git clone https://github.com/BIAlabIC/ligQplus.git
+```
 ### Create execution environment:
 ```
 $ conda create --name ligQ_plus
@@ -13,16 +17,20 @@ $ conda create --name ligQ_plus
 ```
 $ conda activate ligQ_plus
 ```
-Once the work environment is created, download the pipeline.
-### Download and pre-requisites 
+Once in the ligQ plus environment install:
 ```
-$ git clone https://github.com/BIAlabIC/ligQplus.git
+$ pip install tqdm
+$ pip install pandas
+$ pip install Bio
+$ pip install chembl_webresource_client
+
 ```
 In order for your Linux system to find the given command/executable file, we need to make sure to run the following command in the using terminal before starting work:
 ```
 $ export PYTHONPATH=$PYTHONPATH:/path/to/ligqplus
 $ export PATH=$PATH:/path/to/ligqplus
 ```
+
 ## Create databases
  In addition to the scripts, it is necessary to have a series of Databases. Some scripts search using databases locally via SQL such as ChEMBL and others via URL/API. Some databases should be previously generated to save computing time. It is necessary to have the space to store these databases.
 ### MOAD
