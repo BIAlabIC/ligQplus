@@ -3,6 +3,8 @@ Massive compound screening for pathogenic proteomes.
 
 ## Work scheme
 
+  In order to carry out this pipeline, the first thing to do is create a conda environment where you can install a series of necessary packages. See here more information about [Anaconda](https://www.anaconda.com/download/). In addition, it is necessary to have a version of python 3 at least.
+  
 ### Create execution environment:
 ```
 $ conda create --name ligQ_plus
@@ -11,14 +13,18 @@ $ conda create --name ligQ_plus
 ```
 $ conda activate ligQ_plus
 ```
+Once the work environment is created, download the pipeline.
 ### Download and pre-requisites 
 ```
 $ git clone https://github.com/BIAlabIC/ligQplus.git
+```
+In order for your Linux system to find the given command/executable file, we need to make sure to run the following command in the using terminal before starting work:
+```
 $ export PYTHONPATH=$PYTHONPATH:/path/to/ligqplus
 $ export PATH=$PATH:/path/to/ligqplus
 ```
 ## Create databases
-
+ In addition to the scripts, it is necessary to have a series of Databases. Some scripts search using databases locally via SQL such as ChEMBL and others via URL/API. Some databases should be previously generated to save computing time. It is necessary to have the space to store these databases.
 ### MOAD
 ```
 $ wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
@@ -26,9 +32,12 @@ $ wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
 $ python /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
 ```
 ### CHEMBL
+The [ChEMBL](https://www.ebi.ac.uk/chembl/) database can be at least 20gb in size, please check if you have enough space before downloading.
 ```
 $ wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
-
+```
+From this base, you must create 2 tables that summarize the information of [PFAM](http://pfam.xfam.org/) domains per target molecule and the ligands that each presents:
+```
 $ python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
 
 $ python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
@@ -45,22 +54,23 @@ $ wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data
 ```
 $ makeblastdb -in Proteome_uniprot.fasta -dbtype prot
 
-$ blastp -db Proteome_uniprot.fasta -query XXX.fasta -qcov_hsp_perc 80 -num_threads 4 -max_hsps 1 -outfmt 6 > file.txt
+$ blastp -db Proteome_uniprot.fasta -query organism.fasta -qcov_hsp_perc 80 -num_threads 4 -max_hsps 1 -outfmt 6 > file.txt
 
-$ tr '.' ',' < file.txt | awk '$3>=90' > XXX_filter.txt (filter by identity)
+$ tr '.' ',' < file.txt | awk '$3>=90' > organism_filter.txt (filter by identity)
 
-$ awk -F " " '{print $1, "", $2}' XXX_filter.txt > XXX_final.txt (keep the first 2 columns)
+$ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep the first 2 columns)
 ```
+> 'organism_final.txt' It will finally have 2 columns. The first containing the locus tag of each protein of the organism of interest and the second column with the respective UniprotID. There can be multiple Uniprot IDs for each locus tag.
 
 ## Scripts:
 
-> note: Make sure to have all the files and scripts in the same folder before proceeding. Including: organism/XXX_final.txt, pfam_assay_##.csv, pfam_mech_##.csv, chembl_##.db, moad.json, etc.
+> note: Make sure to have all the files, DataBases and scripts in the same folder before proceeding. Including: organism/XXX_final.txt, pfam_assay_##.csv, pfam_mech_##.csv, chembl_##.db, moad.json, etc.
 
 ### Run
 
 1. prepocessing_proteome_liqQ.py
 ```
-  $ python prepocessing_proteome_liqQ.py -i /path/to/organism/XXX_final.txt -o organism -n organism
+  $ python prepocessing_proteome_liqQ.py -i /path/to/organism/organism_final.txt -o organism -n organism
 ```
 2. Create organism directory (mkdir organism inside path/to/organism/)
 
