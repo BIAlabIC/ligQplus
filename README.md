@@ -30,7 +30,7 @@ The every_bind.csv file is generated based on experimental assays and contains c
 ```
 $ wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
 
-$ python /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
+$ python3 /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
 ```
 ### CHEMBL
 The [ChEMBL](https://www.ebi.ac.uk/chembl/) database can be at least 20gb in size, please check if you have enough space before downloading.
@@ -39,9 +39,9 @@ $ wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
 ```
 From this base, you must create 2 tables that summarize the information of [PFAM](http://pfam.xfam.org/) domains per target molecule and the ligands that each presents:
 ```
-$ python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
+$ python3 target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
 
-$ python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
+$ python3 target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
 ```
 ### Mapping pfam-pdb and pdb-ligands
 The pdb_pfam_mapping.txt file contains information about the PFAM domains (start/end positions) of each of the protein structures deposited in the PDB.
@@ -74,36 +74,36 @@ $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep
 
 1. prepocessing_proteome_liqQ.py
 ```
-  $ python prepocessing_proteome_liqQ.py -i /path/to/organism/organism_final.txt -o organism -n organism
+  $ python3 prepocessing_proteome_liqQ.py -i /path/to/organism/organism_final.txt -o organism -n organism
 ```
 2. Create organism directory (mkdir organism inside path/to/organism/)
 
   * make_dic.py (create directories with the list of Uniprot IDs to test)
 ```
-  $ python make_dic.py -i organism_lt.txt (output from 1.) -o organism/organism/
+  $ python3 make_dic.py -i organism_lt.txt (output from 1.) -o organism/organism/
 ```
 3. proteome_compound.py (returns a list of ligands by Uniprot ID)
 ```
-  $ python proteome_compound.py -i organism_lt.txt (output from 1.) -o organism/organism/
+  $ python3 proteome_compound.py -i organism_lt.txt (output from 1.) -o organism/organism/
 ```
 4. analysis_result.py (Takes the previous output and combines the results by ChEMBL and PDB)
 ```
-  $ python analysis_result.py -i organism/organism/
+  $ python3 analysis_result.py -i organism/organism/
 ```
 5. smile_list.py (takes the previous output and converts the ligands into their SMILES. It requires chembl_#.db for SQL)
 ```
-  $ python smile_list.py -i organism/organism/ 
+  $ python3 smile_list.py -i organism/organism/ 
 ```
 6. lt_csv_maker/lt_id_smiles/lt_smiles_maker.py (creates the final outputs by grouping the ligands by lt)
 ```
-  $ python lt_csv_maker.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_ligands.csv
+  $ python3 lt_csv_maker.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_ligands.csv
 
-  $ python lt_id_smiles.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_id_smiles.csv
+  $ python3 lt_id_smiles.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_id_smiles.csv
 
-  $ python lt_smiles_maker.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_smiles.csv
+  $ python3 lt_smiles_maker.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_smiles.csv
 ```
 7. clustering.py (Clusters the ligands by lt and searches for commercially available ligands in the Zinc database.)
 ```
-  $ python clustering.py -i organismo_lt_id_smiles.csv -o organism/organism/ 
+  $ python3 clustering.py -i organismo_lt_id_smiles.csv -o organism/organism/ 
 
 ```
