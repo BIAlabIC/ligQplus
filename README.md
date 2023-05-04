@@ -26,6 +26,7 @@ $ export PATH=$PATH:/path/to/ligqplus
 ## Create databases
  In addition to the scripts, it is necessary to have a series of Databases. Some scripts search using databases locally via SQL such as ChEMBL and others via URL/API. Some databases should be previously generated to save computing time. It is necessary to have the space to store these databases.
 ### MOAD
+The every_bind.csv file is generated based on experimental assays and contains curated information about interactions between ligands and proteins available in the PDB database.
 ```
 $ wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
 
