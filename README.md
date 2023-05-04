@@ -43,6 +43,9 @@ $ python target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam
 $ python target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
 ```
 ### Mapping pfam-pdb and pdb-ligands
+The pdb_pfam_mapping.txt file contains information about the PFAM domains (start/end positions) of each of the protein structures deposited in the PDB.
+
+The lig_pairs.lst file contains information about the ligands co-crystallized with each of the protein structures deposited in the PDB.
 ```
 $ wget -O pdb_pfam_mapping.txt "http://ftp.ebi.ac.uk/pub/databases/Pfam/mappings/pdb_pfam_mapping.txt"
 
