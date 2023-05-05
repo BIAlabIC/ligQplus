@@ -30,8 +30,8 @@ $ pip install rdkit
 ```
 In order for your Linux system to find the given command/executable file, we need to make sure to run the following command in the using terminal before starting work:
 ```
-$ export PYTHONPATH=$PYTHONPATH:/path/to/ligqplus
-$ export PATH=$PATH:/path/to/ligqplus
+$ export PYTHONPATH=$PYTHONPATH:/path/to/ligQplus/
+$ export PATH=$PATH:/path/to/ligQplus/
 ```
 
 ## Create databases
