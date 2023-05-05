@@ -23,7 +23,10 @@ $ pip install tqdm
 $ pip install pandas
 $ pip install Bio
 $ pip install chembl_webresource_client
-
+$ pip install numpy
+$ pip install bioservices
+$ pip install sqlalchemy 
+$ pip install rdkit
 ```
 In order for your Linux system to find the given command/executable file, we need to make sure to run the following command in the using terminal before starting work:
 ```
@@ -111,7 +114,8 @@ $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep
   $ python3 lt_smiles_maker.py -i organism/organism/ -dict organism/organism_final.json (output from prepocessing_proteome_liqQ.py) -o organism_lt_smiles.csv
 ```
 7. clustering.py (Clusters the ligands by lt and searches for commercially available ligands in the Zinc database.)
+> Before running this last step, create in organism/organism/ the folder zinc/ ( $ mkdir organism/organism/zinc/ )
 ```
-  $ python3 clustering.py -i organismo_lt_id_smiles.csv -o organism/organism/ 
+  $ python3 clustering.py -i test/test/test_lt_id_smiles.csv -o test/test/zinc/
 
 ```
