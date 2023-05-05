@@ -116,6 +116,6 @@ $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep
 7. clustering.py (Clusters the ligands by lt and searches for commercially available ligands in the Zinc database.)
 > Before running this last step, create in organism/organism/ the folder zinc/ ( $ mkdir organism/organism/zinc/ )
 ```
-  $ python3 clustering.py -i test/test/test_lt_id_smiles.csv -o test/test/zinc/
+  $ python3 clustering.py -i organism/organism/organism_lt_id_smiles.csv -o organism/organism/zinc/
 
 ```
