@@ -1,0 +1,4 @@
+,Date,Representative_ligand,Cache_ligand,Ligand_list,Zinc_result
+0,05/05/2023 12:21,BMA,BMA,['BMA'],"('ZINC000000901155', 'OC[C@H]1O[C@H](O)[C@H](O)[C@@H](O)[C@H]1O\n')"
+1,05/05/2023 12:21,FUL,BMA,['FUL'],"('ZINC000000901155', 'OC[C@H]1O[C@H](O)[C@H](O)[C@@H](O)[C@H]1O\n')"
+2,05/05/2023 12:21,NDG,NDG,['NDG'],"('ZINC000003870077', 'CC(=O)N[C@@H]1[C@@H](O)O[C@@H](CO)[C@@H](O)[C@@H]1O\n')"

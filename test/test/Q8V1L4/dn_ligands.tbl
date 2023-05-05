@@ -1,0 +1,12 @@
+	domain	chain	resid_start	resid_end	pdb	ligand	ligand_chain	ligand_resid	insertion_code
+0	PF01570	C	6	90	3c5x	NAG	C	69	None
+1	PF01570	C	6	90	3c5x	NAG	C	33	None
+2	PF01570	C	6	90	3c5x	NAG	C	31	None
+3	PF01570	C	6	90	3c5x	NAG	C	48	None
+4	PF01570	C	6	90	3c5x	NAG	C	31	None
+5	PF01570	C	6	90	3c6e	NAG	C	45	None
+6	PF01570	C	6	90	3c6e	NAG	C	31	None
+7	PF01570	C	6	90	3c6e	NAG	C	30	None
+8	PF01570	C	6	90	3c6e	NDG	C	31	None
+9	PF01570	C	6	90	3c6e	NDG	C	69	None
+10	PF01570	C	6	90	3c6e	NDG	C	33	None
