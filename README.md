@@ -41,7 +41,7 @@ The every_bind.csv file is generated based on experimental assays and contains c
 ```
 $ wget -O moad.csv "http://bindingmoad.org/files/csv/every_bind.csv"
 
-$ python3 /patho_pdb_domain/MOAD_PDBIND/MOAD.py > moad.json
+$ python3 /patho_pdb_domain/MOAD_PDBIND/MOAD.py -i moad.csv > moad.json
 ```
 ### CHEMBL
 The [ChEMBL](https://www.ebi.ac.uk/chembl/) database can be at least 20gb in size, please check if you have enough space before downloading.
