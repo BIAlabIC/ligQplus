@@ -65,7 +65,7 @@ $ wget -O lig_pairs.lst "http://www.ebi.ac.uk/thornton-srv/databases/pdbsum/data
 ```
 
 ### Prepare proteome and extract Uniprot IDs
-> Note: "Proteome_uniprot.fasta" refers to all proteins in uniprot DataBase related to the organism of interest. Must be download from [Uniprot](https://www.uniprot.org)
+> Note: "Proteome_uniprot.fasta" refers to all proteins in uniprot DataBase related to the organism of interest. Must be download from [Uniprot](https://www.uniprot.org). If you like you can use our test file to check. 
 ```
 $ makeblastdb -in Proteome_uniprot.fasta -dbtype prot
 
@@ -117,5 +117,7 @@ $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep
 > Before running this last step, create in organism/organism/ the folder zinc/ ( $ mkdir organism/organism/zinc/ )
 ```
   $ python3 clustering.py -i organism/organism/organism_lt_id_smiles.csv -o organism/organism/zinc/
-
 ```
+
+## Test 
+We have a Test/ folder that contains the results of the complete script for the proteome of one of the dengue variants.
