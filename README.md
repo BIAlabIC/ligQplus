@@ -19,6 +19,7 @@ $ conda activate ligQ_plus
 ```
 Once in the ligQ plus environment install:
 ```
+$ conda install -c bioconda blast
 $ pip install tqdm
 $ pip install pandas
 $ pip install Bio
