@@ -46,6 +46,9 @@ $ python3 /patho_pdb_domain/MOAD_PDBIND/MOAD.py -i moad.csv > moad.json
 ```
 ### CHEMBL
 The [ChEMBL](https://www.ebi.ac.uk/chembl/) database can be at least 20gb in size, please check if you have enough space before downloading.
+
+> Note: The stable version for this pipeline is ChEMbL 28. If you want to use it another version of this database, please let us know us if you have any issues. 
+
 ```
 $ wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
 ```
