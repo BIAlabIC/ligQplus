@@ -5,6 +5,7 @@ import json
 import argparse
 import os
 from collections import defaultdict
+from requests.exceptions import RequestException
 
 def lt_list_maker(blast_proteome_output, output_path, organism_name):
     protmap = defaultdict(list) 
@@ -32,7 +33,7 @@ def lt_list_maker(blast_proteome_output, output_path, organism_name):
                 else:
                     vv=sp
             
-            protmap2[k] = vv
+                protmap2[k] = vv
              
     for key, value in protmap2.items():
         for v in value:
