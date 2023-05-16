@@ -54,9 +54,9 @@ $ wget ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/#last_version#/
 ```
 From this base, you must create 2 tables that summarize the information of [PFAM](http://pfam.xfam.org/) domains per target molecule and the ligands that each presents:
 ```
-$ python3 target_chembl/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
+$ python3  /path/to/ligqplus/patho_chembl/pfam_trg_sql_assay.py -db chembl_#.db > pfam_assay_##.csv
 
-$ python3 target_chembl/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
+$ python3  /path/to/ligqplus/patho_chembl/pfam_trg_sql_mech.py -db chembl_#.db > pfam_mech_#.csv
 ```
 ### Mapping pfam-pdb and pdb-ligands
 The pdb_pfam_mapping.txt file contains information about the PFAM domains (start/end positions) of each of the protein structures deposited in the PDB.
@@ -79,6 +79,8 @@ $ tr '.' ',' < file.txt | awk '$3>=90' > organism_filter.txt (filter by identity
 
 $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep the first 2 columns)
 ```
+> Note: If the previously executed command doesn't work (losing identity values of 100.000), perform the filtering without changing "." to ",".
+
 > 'organism_final.txt' It will finally have 2 columns. The first containing the locus tag of each protein of the organism of interest and the second column with the respective UniprotID. There can be multiple Uniprot IDs for each locus tag.
 
 ## Scripts:
