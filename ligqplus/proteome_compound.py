@@ -9,10 +9,11 @@ from tqdm.auto import tqdm
 import pandas as pd
 import uniprot.uniprot as uni
 from patho_chembl.trg_mol_funcion import trg_to_mol
-from ligand_from_pfam.domain_pdb_ligand import ligands_from_domain
-from extracts.extract_ligand_from_pdb import ligands_from_pdb, pdb_ligands_mapping
-from MOAD_PDBIND.filter_MOAD import filter_ligands
-from ligand_from_pfam.request_ligand_from_PDBe import pdb_ligand_data_batch
+#from patho_pdb_domain.ligand_from_pfam import ligands_from_domain
+from patho_pdb_domain.ligand_from_pfam.domain_pdb_ligand import ligands_from_domain
+from patho_pdb_domain.extracts.extract_ligand_from_pdb import ligands_from_pdb, pdb_ligands_mapping
+from patho_pdb_domain.MOAD_PDBIND.filter_MOAD import filter_ligands
+from patho_pdb_domain.ligand_from_pfam.request_ligand_from_PDBe import pdb_ligand_data_batch
 from patho_chembl.pfam_mol_assay import fix_dataset, search_bypfam
 from patho_chembl.pfam_mol_mech import search_bypfam as search_bypfam_mech
 import json
