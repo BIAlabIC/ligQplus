@@ -77,6 +77,8 @@ $ blastp -db Proteome_uniprot.fasta -query organism.fasta -qcov_hsp_perc 80 -num
 
 $ tr '.' ',' < file.txt | awk '$3>=90' > organism_filter.txt (filter by identity)
 
+> Note: f the previously executed command doesn't work (losing identity values of 100.000), perform the filtering without changing "." to ","
+
 $ awk -F " " '{print $1, "", $2}' organism_filter.txt > organism_final.txt (keep the first 2 columns)
 ```
 > 'organism_final.txt' It will finally have 2 columns. The first containing the locus tag of each protein of the organism of interest and the second column with the respective UniprotID. There can be multiple Uniprot IDs for each locus tag.
