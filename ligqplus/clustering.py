@@ -85,7 +85,10 @@ class Compound_cache():
         
     
     def put(self, cache_record, cluster_ligands):
-        self.df_cache=self.df_cache.append(cache_record, ignore_index=True)
+        print(cache_record)
+        df_cache_record=pd.DataFrame(cache_record)
+        self.df_cache=pd.concat([self.df_cache, df_cache_record], ignore_index=True).drop_duplicates('Representative_ligand')
+        #print(self.df_cache)
         for cluster_ligand in cluster_ligands:
             self.dict_lig_representative[cluster_ligand]=cache_record['Representative_ligand']
         

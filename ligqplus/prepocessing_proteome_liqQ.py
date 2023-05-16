@@ -5,7 +5,6 @@ import json
 import argparse
 import os
 from collections import defaultdict
-from requests.exceptions import RequestException
 
 def lt_list_maker(blast_proteome_output, output_path, organism_name):
     protmap = defaultdict(list) 

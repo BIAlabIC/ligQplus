@@ -1,5 +1,4 @@
 from patho_pdb_domain.ligand_from_pfam.request_ligand_from_PDBe import ligands_from_pdbs
-#from ligand_from_pfam.request_ligand_from_PDBe import ligands_from_pdbs
 import argparse
 import sys
 import pandas as pd
