@@ -28,10 +28,12 @@ def pros_trg_mol_list(records):
 
      if 'max_phase' not in df.columns:
          df['max_phase'] = None
-     elif 'pchembl_value' not in df.columns:
+     if 'pchembl_value' not in df.columns:
          df['pchembl_value'] = None
-     elif 'activity_comment' not in df.columns:
+     if 'activity_comment' not in df.columns:
          df['activity_comment'] = None
+     if 'target_organism' not in df.columns:
+         df['target_organism'] = None
      df.loc[((df['activity_comment'] == 'Active') & (df['pchembl_value'].isnull())), 'pchembl_value'] = 6  #TODO: revisar este filtro |
      df.loc[((df['max_phase'].notnull())), 'pchembl_value'] = 6
      df.loc[((df['pchembl_value'].isnull())), 'pchembl_value'] = 0
