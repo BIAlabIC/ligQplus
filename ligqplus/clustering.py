@@ -142,6 +142,8 @@ def purchable_molecules(cluster_dict, dict_ligandid_smiles, cache, tanimoto_clus
         if not cache_record:
             purchable=get_zinc(cluster_representative_smiles, tanimoto_zinc) 
             sleep(0.5)
+            if  purchable==None:
+                purchable=[]
             dict_cache={'Representative_ligand':cluster_representative_ligand, 
                         'Zinc_result':purchable, 
                         'SMILES':cluster_representative_smiles,
