@@ -28,7 +28,7 @@ def moad_parse(input_file):
         chain=line_split[3].split(":")[1]
         resid=line_split[3].split(":")[2]
         status=line_split[4]
-        if line_split[7] !="":
+        if line_split[7] !="" and line_split[8] !="":
             afinity_standard=line_split[7]+line_split[8]
             afinity = toMolar.toMolar(float(line_split[7]),line_split[8])
             type_afinity=line_split[5]
